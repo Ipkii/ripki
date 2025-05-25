@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Dinamis Multimedia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 30px;
+            background-color: #f2f2f2;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        img, audio, video {
+            margin: 20px auto;
+            display: block;
+            max-width: 100%;
+        }
+        h2 {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Web Dinamis Multimedia</h1>
+
+        <div id="gambar-section">
+            <h2>Gambar</h2>
+        </div>
+
+        <div id="audio-section">
+            <h2>Lagu</h2>
+        </div>
+
+        <div id="video-section">
+            <h2>Video</h2>
+        </div>
+    </div>
+
+    <script>
+        // Ganti dengan username dan nama repo kamu
+        const baseURL = "https://raw.githubusercontent.com/namamu/web-multimedia/main/";
+
+        const gambar = [
+            "gambar/Gambar WhatsApp 2025-05-25 pukul 23.14.36_8a4316ac.jpg"
+        ];
+
+        const audio = [
+            "audio/Audio WhatsApp 2025-05-25 pukul 23.14.59_c01ae01e.mp3"
+        ];
+
+        const video = [
+            "video/Video WhatsApp 2025-05-25 pukul 23.14.36_94d57dff.mp4"
+        ];
+
+        function tampilkanGambar() {
+            const container = document.getElementById("gambar-section");
+            gambar.forEach(file => {
+                const img = document.createElement("img");
+                img.src = baseURL + file;
+                img.alt = "Gambar dari GitHub";
+                container.appendChild(img);
+            });
+        }
+
+        function tampilkanAudio() {
+            const container = document.getElementById("audio-section");
+            audio.forEach(file => {
+                const audioEl = document.createElement("audio");
+                audioEl.controls = true;
+                const source = document.createElement("source");
+                source.src = baseURL + file;
+                source.type = "audio/mpeg";
+                audioEl.appendChild(source);
+                container.appendChild(audioEl);
+            });
+        }
+
+        function tampilkanVideo() {
+            const container = document.getElementById("video-section");
+            video.forEach(file => {
+                const videoEl = document.createElement("video");
+                videoEl.controls = true;
+                videoEl.width = 500;
+                const source = document.createElement("source");
+                source.src = baseURL + file;
+                source.type = "video/mp4";
+                videoEl.appendChild(source);
+                container.appendChild(videoEl);
+            });
+        }
+
+        // Panggil semua fungsi saat halaman dimuat
+        tampilkanGambar();
+        tampilkanAudio();
+        tampilkanVideo();
+    </script>
+</body>
+</html>
